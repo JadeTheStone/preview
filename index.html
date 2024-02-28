@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>PPR – Enquadramento Fiscal e Benefícios</title>
+    <meta charset="utf-8">
+    <meta name="description" content="Guia completo sobre Planos de Poupança Reforma (PPR), incluindo enquadramento fiscal, benefícios e considerações para trabalhadores e entidades patronais.">
+    <meta name="keywords" content="PPR, Poupança Reforma, Enquadramento Fiscal, IRS, CIRC, Benefícios Fiscais, Poupança para Reforma">
+    <meta name="author" content="Luísa Carriço">
+  
+  </head>
+  <body>
+
+    <style type="text/css">
+      body {
+        background-color: #33333300;
+        margin: 0;
+        padding: 0;
+      }
+      .container {
+        height: 95vh;
+        width: 95%;
+        margin: 20px auto;
+        
+      }
+      .fullscreen {
+        background-color: #333;
+      }
+      .examples {
+        position: relative;
+      }
+      .examples div {
+        position: absolute;
+        text-align: center;
+        width: 100%;
+        padding-top: 10px;
+        font-size: 20px;
+      }
+      .examples a {
+        color: #ccc;
+        text-decoration: none;
+        padding: 0 10px;
+      }
+      .examples a:hover {
+        color: #fff;
+      }
+    </style>
+
+    <div class="container" id="container">
+
+    </div>
+
+    <script src="js/jquery.min.js"></script>
+    <script src="js/html2canvas.min.js"></script>
+    <script src="js/three.min.js"></script>
+    <script src="js/pdf.min.js"></script>
+
+    <script src="js/3dflipbook.min.js"></script>
+    <script type="text/javascript">
+
+      <!--/Luís/ change the name in this function example: (victoriaBM_Made_this)PageCallback /Luís/-->
+      <!-- /Luís/ change the name in the src example: books/image/(victoriaBM_Made_this) /Luís/ -->
+      function victoriaBM_Made_thisPageCallback(n) {
+        return {
+          type: 'image',
+          src: 'books/image/victoriaBM_Made_this/'+(n+1)+'.png',
+          interactive: false
+        };
+      }
+      <!--/Luís/ change the name in the pageCallback example: pageCallback: (victoriaBM_Made_this)PageCallback /Luís/-->
+      $('#container').FlipBook({
+        pageCallback: victoriaBM_Made_thisPageCallback,
+        pages: 40,
+        propertiesCallback: function(props) {
+          props.cssLayersLoader = function(n, clb) {// n - page number
+            clb([{
+              
+              js: function (jContainer) {
+                console.log(jContainer);
+                return {
+                  hide: function() {console.log('hide');},
+                  hidden: function() {console.log('hidden');},
+                  show: function() {console.log('show');},
+                  shown: function() {console.log('shown');},
+                  dispose: function() {console.log('dispose');}
+                };
+              }
+            }]);
+          };
+          props.cover.color = 0x000000;
+          return props;
+        },
+        template: {
+          html: 'templates/default-book-view.html',
+          styles: [
+            'css/short-white-book-view.css'
+          ],
+          links: [
+            {
+              rel: 'stylesheet',
+              href: 'css/font-awesome.min.css'
+            }
+          ],
+          script: 'js/default-book-view.js',
+          sounds: {
+            startFlip: 'sounds/start-flip.mp3',
+            endFlip: 'sounds/end-flip.mp3'
+          }
+        }
+      });
+      
+
+    </script>
+
+  </body>
+</html>

@@ -1,0 +1,3 @@
+all you need to to do is:
+-to add pictures to a new image folder (under books folder) and make the new folder is under books folder. Give the new folder a unique name
+-a new html(copy UpdatedArticle.html) follow the notes in lines 60 ,61 and 69
